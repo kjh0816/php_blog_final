@@ -5,6 +5,8 @@ $prodSiteDomain = $application->getProdSiteDomain();
 $isLogined = $_REQUEST['App__isLogined'];
 $loginedMemberId = $_REQUEST['App__loginedMemberId'];
 $loginedMember = $_REQUEST['App__loginedMember'];
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -47,7 +49,7 @@ $loginedMember = $_REQUEST['App__loginedMember'];
     <header class="top-bar fixed top-0 inset-x-0 bg-purple-300 text-white h-10">
       <div class="container mx-auto h-full flex">
         <a href="/" class="top-bar__logo px-5 flex items-center">
-          <img class="w-4 h-4" src="/../../../public/resource/img/logo/logo_meta.png" alt="">
+          <img class="w-12 h-12 mt-1 -mr-1" src="/../../../resource/img/logo_meta.png" alt="">
           <span class="ml-2 font-bold hidden sm:inline">Typers</span>
         </a>
         <div class="flex-grow"></div>
