@@ -16,10 +16,10 @@ class App__Application {
     $envCode = $this->getEnvCode();
 
     if ( $envCode == 'dev' ) {
-      $dbHost = "127.0.0.1";
-      $dbId = "sbsst";
+      $dbHost = "jua.oa.gg";
+      $dbId = "st__2021_04_full__site03";
       $dbPw = "sbs123414";
-      $dbName = "php_blog_2021";
+      $dbName = "st__2021_04_full__site03";
     }
     else if ( $envCode == 'prod' ) {
       $dbHost = "127.0.0.1";

@@ -19,6 +19,7 @@ function App__runNeedLoginInterceptor(string $action) {
   
   // 로그인이 필요없는 페이지들
   switch ( $action ) {
+    case 'public/index.php':
     case 'usr/member/login':
     case 'usr/member/doLogin':
     case 'usr/member/doLogout':
@@ -41,6 +42,7 @@ function App__runNeedLoginInterceptor(string $action) {
 function App__runNeedLogoutInterceptor(string $action) {
   // 로그인된 상태에서 접근하면 안 되는 페이지들
   switch ( $action ) {
+    
     case 'usr/member/login':
     case 'usr/member/doLogin':
     case 'usr/member/join':

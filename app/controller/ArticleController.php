@@ -10,7 +10,7 @@ class APP__UsrArticleController {
   public function actionShowWrite() {
 
     
-    $memberId = $_REQUEST['App__loginedMember'];
+    $memberId = getIntValueOr($_REQUEST['App__loginedMember'], 0);
 
     // 사용자가 선택할 수 있는 board 리스트 호출(관리자가 아니면 1번(공지) 게시판에 글 쓸 수 없음.)
     global $App__boardService;
@@ -21,7 +21,7 @@ class APP__UsrArticleController {
 
     public function actionDoWrite() {
     
-    $memberId = $_REQUEST['App__loginedMember'];
+    $memberId = getIntValueOr($_REQUEST['App__loginedMember'], 0);
     $title = getStrValueOr($_REQUEST['title'], "");
     $body = getStrValueOr($_REQUEST['body'], "");
     $boardId = getStrValueOr($_REQUEST['boardId'], "");
@@ -37,6 +37,8 @@ class APP__UsrArticleController {
     if ( !$boardId ) {
       jsHistoryBackExit("내용을 입력해주세요.");
     }
+
+    
     
 
     $id = $this->articleService->writeArticle($title, $body, $boardId, $memberId);
