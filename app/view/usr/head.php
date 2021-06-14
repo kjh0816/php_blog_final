@@ -44,10 +44,10 @@ $loginedMember = $_REQUEST['App__loginedMember'];
 </head>
 <body>
   <div class="site-wrap min-h-screen flex flex-col pt-10">
-    <header class="top-bar fixed top-0 inset-x-0 bg-black text-white h-10">
+    <header class="top-bar fixed top-0 inset-x-0 bg-purple-300 text-white h-10">
       <div class="container mx-auto h-full flex">
         <a href="/" class="top-bar__logo px-5 flex items-center">
-          <span><i class="fas fa-lemon"></i></span>
+          <img class="w-4 h-4" src="/../../../public/resource/img/logo/logo_meta.png" alt="">
           <span class="ml-2 font-bold hidden sm:inline">Typers</span>
         </a>
         <div class="flex-grow"></div>
@@ -55,28 +55,28 @@ $loginedMember = $_REQUEST['App__loginedMember'];
         <nav class="menu-box-1">
           <ul class="flex h-full">
           <?php if ( $isLogined ) { ?>
-            <li class="hover:bg-white hover:text-black">
+            <li class="hover:bg-white hover:text-pink-500">
               <a href="/usr/member/user" class="h-full flex items-center px-5">
                 <span><i class="fas fa-address-card"></i></span>
                 <span class="ml-2 font-bold hidden sm:inline">MY PAGE</span>
               </a>
             </li>
             <?php } ?>
-            <li class="hover:bg-white hover:text-black">
+            <li class="hover:bg-white hover:text-pink-500">
               <a href="/usr/article/list" class="h-full flex items-center px-5">
                 <span><i class="fas fa-newspaper"></i></span>
                 <span class="ml-2 font-bold hidden sm:inline">ARTICLES</span>
               </a>
             </li>
             <?php if ( $isLogined ) { ?>
-            <li class="hover:bg-white hover:text-black">
+            <li class="hover:bg-white hover:text-pink-500">
               <a href="/usr/member/doLogout" class="h-full flex items-center px-5">
                 <span><i class="fas fa-sign-out-alt"></i></span>
                 <span class="ml-2 font-bold hidden sm:inline">LOGOUT</span>
               </a>
             </li>
             <?php } else { ?>
-            <li class="hover:bg-white hover:text-black">
+            <li class="hover:bg-white hover:text-pink-500">
               <a href="/usr/member/login" class="h-full flex items-center px-5">
                 <span><i class="fas fa-sign-in-alt"></i></span>
                 <span class="ml-2 font-bold hidden sm:inline">LOGIN</span>
@@ -89,6 +89,7 @@ $loginedMember = $_REQUEST['App__loginedMember'];
     </header>
 
     <main class="flex-grow">
+    <?php if($isLogined){?>
       <section class="section-title mt-5 text-2xl font-bold">
         <h1 class="container mx-auto">
           <div class="con-pad">
@@ -97,6 +98,7 @@ $loginedMember = $_REQUEST['App__loginedMember'];
           </div>
         </h1>
       </section> 
+      <?php } ?>
 
 
 
