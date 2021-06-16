@@ -1,8 +1,11 @@
 <?php
-$loginPage = false;
+// $pageTitleIcon = '<i class="fas fa-user-friends"></i>';
+$pageTitleIcon = "false";
 $pageTitle = "로그인";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
+
+
 
 
 <div class="login-box">
@@ -16,7 +19,10 @@ $pageTitle = "로그인";
       <input type="password" name="loginPw" required>
       <label>Password</label>
     </div>
+    <div class="login-page-buttons">
     <input class="login-button" type="submit" value="Login">
+    <a href="join" class="signup-button">Sign up</a>
+    </div>
   </form>
 </div>
 

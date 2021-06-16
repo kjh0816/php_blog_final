@@ -1,191 +1,62 @@
-/* 노멀라이징 (시작) */
+@charset "utf-8";
 
-body, ul, li{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  
-
-}
-
-a{
-  text-decoration: none;
-  color: inherit;
-}
-
-
-/* 노멀라이징 (끝) */
-
-/* 폰트 (시작) */
-
+/* 폰트 적용 */
 @font-face {
-  font-family: "LotteMartDream";
+  font-family: 'LotteMartDream';
   font-style: normal;
   font-weight: 400;
-  src: url("//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2")
-    format("woff2"),
-    url("//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff")
-    format("woff");
+  src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
 }
 @font-face {
-  font-family: "LotteMartDream";
+  font-family: 'LotteMartDream';
   font-style: normal;
   font-weight: 700;
-  src: url("//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2")
-    format("woff2"),
-    url("//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff")
-    format("woff");
+  src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff') format('woff');
 }
 @font-face {
-  font-family: "LotteMartDream";
+  font-family: 'LotteMartDream';
   font-style: normal;
   font-weight: 300;
-  src: url("//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2")
-    format("woff2"),
-    url("//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff")
-    format("woff");
-}
-html {
-  font-family: "LotteMartDream", sans-serif;
+  src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff') format('woff');
 }
 
-/* 폰트 (끝) */
-
-/* 라이브러리 (시작) */
-
-.row::after{
-  content: "";
-  clear: both;
-  display: block;
-}
-
-.cell-left{
-  float: left;
-}
-
-.cell-right{
-  float: right;
-}
-
-/* 라이브러리 (끝) */
-
-/* 공통 */
-
-div {
-  font-size: 1.4rem;
-}
-
-hr{
-    border: 0 none;
-    height: 1.3px;
-    color: #333;
-    background: #333;
-    background-color: #333;
-    background-image: linear-gradient(to right, #eee, #222, #eee); 
+html > body, html > body .tui-editor-contents {
+ font-family: 'LotteMartDream', sans-serif;
 }
 
 
 
-/* home.php (시작) */
-
-.top-bar{
-  display: block;
-  background-color: black;
-  height: 4rem;
-  margin-bottom: 20px;
+.con-pad {
+  padding:0 1rem;
 }
 
-.logo, .menu{
-  box-sizing: border-box;
-  padding: 1.3rem;
-  font-size: 1.2rem;
-  color: white;
-  height: inherit;
-}
-
-.menu > a{
-  height: inherit;
-  display: block;
-}
-
-.menu:hover {
-  background-color: white;
-  color: black;
-}
-
-/* home.php (끝) */
-
-/* artlcie/list (시작) */
-
-.article-list-bar{
-  display: block;
-  height: 3rem;
-  padding-top: 10px;
-  box-sizing: border-box;
-  position: relative;
-  
-  
+.top-bar {
+  position: fixed;
 }
 
 
 
-.article-list-write{
-  padding-right: 70px;
-  
 
-}
 
-.article-list-board{
-  padding-left: 50px;
-  height: inherit;
-
-}
-.article-list-choose-board{
-  height: inherit;
-  
-}
-.article-list-search{
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  
-
-}
 
     /* 페이징 부분 (시작) */
-.page-items-cover{
-  display: block;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  font-size: 23px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
+    .page-items-cover{
+      display: block;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      font-size: 23px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .page-item {
+      padding-left: 8px;
+    }
+    
+        /* 페이징 부분 (끝) */
 
-.page-item {
-  padding-left: 8px;
-}
-
-    /* 페이징 부분 (끝) */
-
-/* artlcie/list (끝) */
-
-/* article/detail (시작) */
-
-.article-detail-section{
-  padding-top: 15px;
-  padding-left: 30px;
-}
-
-.article-detail-reply-section {
-  padding-top: 15px;
-  padding-left: 15px;
-}
-
-/* article/detail (끝) */
-
-/* member/login (시작) */
+        /* member/login (시작) */
 
 
 
@@ -196,7 +67,7 @@ hr{
   width: 400px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background: rgba(0,0,0,.5);
+  background: #C4B5FD;
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
@@ -239,51 +110,51 @@ hr{
 .login-box .user-box input:valid ~ label {
   top: -20px;
   left: 0;
-  color: #03e9f4;
+  color: #EC4899;
   font-size: 12px;
 }
 
+.login-page-buttons{
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
 .login-button{
+  margin-right: 3rem;
   width: 100px;
-  background-color: black;
+  background-color: #EC4899;
   color: white;
-  border: ridge;
+  border: 2px ridge;
   border-color: #777;
   height: 2rem;
   font-weight: bold;
 }
 
-.login-button:hover{
+.signup-button{
+  margin-left: 3rem;
+  display: block;
+  width: 100px;
+  background-color: #EC4899;
+  color: white;
+  border: 2px ridge;
+  border-color: #777;
+  height: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.1rem;
+}
+
+.login-button:hover, .signup-button:hover{
   transition-duration: 0.5s;
-  color: black;
-  background: linear-gradient(45deg, skyblue, blue);
+  color: #374151;
+  font-weight:bold;
+  cursor: pointer;
+  
 }
 
 /* member/login (끝) */
 
-/* member/user (시작) */
-
-.user-info{
-  display: block;
-  padding-top: 50px;
-  padding-left: 50px;
-  padding-bottom: 50px;
-  
-
-}
-
-.modify-button{
-  
-  color: blue;
-  font-weight: bold;
-  
-}
-
-.delete-button{
-  color: red;
-  font-weight: bold;
-  
-}
 
 
-/* member/user (끝) */
+        

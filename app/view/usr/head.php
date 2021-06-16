@@ -27,7 +27,7 @@ $loginedMember = $_REQUEST['App__loginedMember'];
   <!-- 데이지UI 불러오기, 테일윈드 필요 -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@1.3.2/dist/full.css" rel="stylesheet" type="text/css" />
 
-  <link rel="stylesheet" href="/resource/common.css">
+  <link rel="stylesheet" href="/common.css">
 
   <?php if ( $envCode == 'prod' ) { ?>
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -91,7 +91,7 @@ $loginedMember = $_REQUEST['App__loginedMember'];
     </header>
 
     <main class="flex-grow">
-    <?php if($isLogined){?>
+    <?php if($pageTitleIcon != "false"){?>
       <section class="section-title mt-5 text-2xl font-bold">
         <h1 class="container mx-auto">
           <div class="con-pad">
