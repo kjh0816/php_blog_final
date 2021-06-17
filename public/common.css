@@ -34,6 +34,16 @@ html > body, html > body .tui-editor-contents {
   position: fixed;
 }
 
+.modify-delete-border{
+  border: 3px solid #C4B5FD;
+  border-radius: 10px;
+  background-color: #EDE9FE;
+}
+
+.article_board_write_font-size{
+  font-size: 20px;
+}
+
 
 
 

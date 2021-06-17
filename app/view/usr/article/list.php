@@ -9,40 +9,54 @@ if(isset($_GET["page"])){
   $pageTitleIcon = '<i class="fas fa-newspaper"></i>';
   $pageTitle = "모든 게시물 리스트";
 ?>
+
 <?php require_once __DIR__ . "/../head.php"; ?>
-<section class = "article-list-bar row mt-10">
-<form action="list">
-<div class="article-list-board cell-left">
-<span>게시판 선택>
-<select class="article-list-choose-board" name="boardId">
-<option value="0">게시판 선택</option>
+<hr class="mt-4">
+<section class="section-article-menu mt-5 ml-10">
+  <div class="container mx-auto">
+  <form action="list">
+  <div class="mb-2">
+<span>
+검색어: 
+<input placeholder="검색 내용을 적어주세요." type="search" name="searchKeyword" class="text-center underline hover:no-underline">
+</span>
+</div>
+<div class="">
+<span class="mr-4">게시판: </span>
+<select class="article-list-choose-board text-pink-400" name="boardId">
+<option value="0" class="text-pink-500">게시판 선택</option>
 <?php foreach($boards as $board){?>
     <option value="<?=$board['id']?>"><?=$board['name']?></option>
 <?php }?>
 </select>
-</span>
-</div>
-<div class="article-list-search float-left">
-<span>
-검색어>
-<input placeholder="검색 키워드" type="search" name="searchKeyword">
-</span>
-<input type="submit" value="검색">
+<input type="submit" value="검색" class="ml-4  cursor-pointer modify-delete-border">
 </div>
 </form>
+  </div>
 </section>
+
+
+
+<br>
+
+
 
 <!-- 사용자가 게시판 선택 (끝) -->
 
                                     
     <!-- 위에서 설정된 값으로 출력 여부 결정 및 출력 (시작) -->
-    <section class="section-article-menu mt-10">
+    <hr>
+    <section class="section-article-menu my-5 ml-10">
   <div class="container mx-auto">
-    <i class="fas fa-feather-alt -mr-4"></i>
-    <a href="write" class="btn btn-link">글 작성</a>
-
-    <i class="fas fa-feather-alt -mr-4"></i>
-    <a href="/board/add" class="btn btn-link">게시판 생성</a>
+  <i class="fab fa-wpforms -mr-4 article_board_write_font-size"></i>
+    <a href="/board/add" class="btn btn-link article_board_write_font-size">게시판 생성</a>
+  </div>
+</section>
+<hr>
+    <section class="section-article-menu my-5 ml-10">
+  <div class="container mx-auto">
+    <i class="fas fa-feather-alt -mr-4 article_board_write_font-size"></i>
+    <a href="write" class="btn btn-link article_board_write_font-size">글 작성</a>
   </div>
 </section>
 <hr>
