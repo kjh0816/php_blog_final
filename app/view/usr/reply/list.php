@@ -90,8 +90,8 @@ if(isset($_SESSION['loginedMemberId'])){
             <button onclick="if(confirm('이 댓글을 삭제하시겠습니까?')){
               location.replace('/usr/reply/doDelete?id=<?=$reply['replyId']?>');
             }else{
-              return false
-            }" class="delete">댓글 삭제</button>
+              return false;
+            }">댓글 삭제</button>
             <form action="/usr/reply/doModify">
             <input type="hidden" name="id" value=<?=$reply['replyId']?>>
             <textarea required placeholder="댓글을 입력해주세요." name="body" id="modifyReply<?=$i?>" style="display: none; width:200px; height: 60px;"></textarea>

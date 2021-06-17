@@ -44,10 +44,13 @@ $articleDetail['liked'];
 <hr>
 <?php if(isset($_SESSION['loginedMemberId'])){ ?>
 <?php if($article['memberId'] == $_SESSION['loginedMemberId'] || $_SESSION['loginedMemberId'] == 1){?>
-<div>
-<a class="modify" href="modify?id=<?=$articleDetail['id']?>">수정하기</a>
-<a class="delete" onClick="if(!confirm('이 게시물을 삭제하시겠습니까?')){return false}" href="doDelete?id=<?=$articleId?>">삭제하기</a>
-</div>
+<a href="modify?id=<?=$articleDetail['id']?>">수정하기</a>
+<button onclick="if(confirm('이 게시물을 삭제하시겠습니까?')){
+    location.replace('doDelete?id=<?=$articleDetail['id']?>');
+    }else{
+        return false;
+    }">삭제하기</button>
+
 
 <?php } } ?>
 
