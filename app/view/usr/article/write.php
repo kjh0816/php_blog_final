@@ -1,10 +1,10 @@
 <?php
-$loginPage = true;
+$pageTitleIcon = '<i class="fas fa-feather-alt"></i>';
 $pageTitle = "게시물 작성";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 
-<form action="doWrite">
+<form action="doWrite" class="mt-10">
 <div>
 <span>게시판 선택
 <select required name="boardId">

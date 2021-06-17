@@ -10,16 +10,12 @@ if(isset($_GET["page"])){
   $pageTitle = "모든 게시물 리스트";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
-<section class = "article-list-bar row">
-<div class="article-list-write cell-right">
-<i class="fas fa-feather-alt"></i>
-<a href="write"><span>글 작성</span></a>
-</div>
+<section class = "article-list-bar row mt-10">
 <form action="list">
 <div class="article-list-board cell-left">
 <span>게시판 선택>
 <select class="article-list-choose-board" name="boardId">
-<option value="0">게시판 전체</option>
+<option value="0">게시판 선택</option>
 <?php foreach($boards as $board){?>
     <option value="<?=$board['id']?>"><?=$board['name']?></option>
 <?php }?>
@@ -35,53 +31,82 @@ if(isset($_GET["page"])){
 </div>
 </form>
 </section>
-<hr>
 
 <!-- 사용자가 게시판 선택 (끝) -->
-                    
+
                                     
     <!-- 위에서 설정된 값으로 출력 여부 결정 및 출력 (시작) -->
+    <section class="section-article-menu mt-10">
+  <div class="container mx-auto">
+    <i class="fas fa-feather-alt -mr-4"></i>
+    <a href="write" class="btn btn-link">글 작성</a>
+
+    <i class="fas fa-feather-alt -mr-4"></i>
+    <a href="/board/add" class="btn btn-link">게시판 생성</a>
+  </div>
+</section>
+<hr>
 
 
-                    <?php
-                    if($totalRecord != 0){  // 불러온 게시물이 존재할 경우
-                      
-                      foreach($filteredArticles as $article){
-                      
-                      /* 제목 글자수가 30이 넘으면 ... 표시로 처리해주기 */
-                      $title = $article['title'];
-                      if(strlen($title) > 30){
-                          $title=str_replace($article['title'],mb_substr($article['title'], 0, 30, "utf-8")."...", $article['title']);
-                      }?>
-                      <nav>
-                        <a href="detail?id=<?=$article['id']?>" class="article_section">
-                          <div>번호: <?=$article['id']?></div>
-                          <div>
-                            <div>제목: <?=$title?>
-                            <span style="color:blue;">(<?=$article['replyCount']?>)</span>
-                            </div>
-                            <div>
-                              <div>게시판: <?=$article['name']?></div>
-                              <div>작성날짜: <?=$article['regDate']?></div>
-                              <div>작성자: <?=$article['nickname']?></div>
-                              <div>조회수: <?=$article['count']?></div>
-                            </div>
-                          </div>
-                        </a>
-                      </nav>
-                      <hr class="article-list-hr">
 
-                  <?php  }  
-      
-                }else{
-                  echo "검색 결과와 일치하는 게시물이 없습니다.";
-                }?>
+<section class="section-articles mt-10">
+  <div class="container mx-auto">
+    <div class="con-pad">
+
+      <div>
+        <div class="badge badge-primary badge-outline">게시물 수</div>
+        <?=$totalRecord?>
+      </div>
+
+      <hr class="mt-4">
+
+      <div>
+        <?php foreach ( $filteredArticles as $article ) { ?>
+          <div class="py-5">
+            <?php
+            $detailUri = "detail?id=${article['id']}";
+            $body = str_replace('<script', '<t-script>', $article['body']);
+            $body = str_replace('</script>', '</t-script>', $article['body']);
+            ?>
+            <div>
+              <div class="badge badge-primary badge-outline">번호</div>
+              <a href="<?=$detailUri?>"><?=$article['id']?></a>
+            </div>
+            <div class="mt-2">
+              <div class="badge badge-primary badge-outline">제목</div>
+              <a href="<?=$detailUri?>"><?=$article['title']?></a>
+            </div>
+            <div class="mt-2">
+              <div class="badge badge-primary badge-outline">작성자</div>
+              <?=$article['nickname']?>
+            </div>
+            <div class="mt-2">
+              <div class="badge badge-primary badge-outline">수정날짜</div>
+              <?=$article['updateDate']?>
+            </div>
+            <div class="mt-2">
+              <div class="badge badge-primary badge-outline">조회수</div>
+              <?=$article['count']?>
+            </div>
+            <div class="mt-2">
+              <script type="text/x-template"><?=$body?></script>
+              <div class="toast-ui-viewer"></div>
+            </div>
+          </div>
+          <hr>
+        <?php } ?>
+      </div>
+    </div>
+  </div>
+</section>
+
+                    
 
                 <!-- 위에서 설정된 값으로 출력 여부 결정 및 출력 (끝) -->
 
         <!-- 페이징 부분 (시작)-->
                 <nav  class="page-items-cover">
-                    <ul  class="page-items row">
+                    <ul  class="page-items flex">
                         <?php
                             if ($page <= 1){
                                 // 빈 값
@@ -124,6 +149,7 @@ if(isset($_GET["page"])){
     </div>
 
 <!-- 페이징 부분 (끝)-->
+
       
 <?php 
 require_once __DIR__.'/../foot.php';

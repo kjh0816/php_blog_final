@@ -126,11 +126,7 @@ class APP__ArticleRepository {
   public function getSearchKeywordAndBoardIdFilteredArticles(string $searchKeyword, int $boardId, bool $paging, int $articleStart, int $itemCountInAPage): array|null{
     
     $sql = DB__secSql();
-    $sql->add("SELECT A.id `id`");
-    $sql->add(", A.regDate `regDate`");
-    $sql->add(", A.liked `liked`");
-    $sql->add(", A.count `count`");
-    $sql->add(", A.title `title`");
+    $sql->add("SELECT A.*");
     $sql->add(", B.name `name`");
     $sql->add(", M.nickname `nickname`");
     $sql->add(", (SELECT COUNT(*) FROM reply WHERE relId = A.id) AS `replyCount`");

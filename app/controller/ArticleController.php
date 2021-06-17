@@ -21,7 +21,7 @@ class APP__UsrArticleController {
 
     public function actionDoWrite() {
     
-    $memberId = getIntValueOr($_REQUEST['App__loginedMember'], 0);
+    $memberId = getIntValueOr($_SESSION['loginedMemberId'], 0);
     $title = getStrValueOr($_REQUEST['title'], "");
     $body = getStrValueOr($_REQUEST['body'], "");
     $boardId = getStrValueOr($_REQUEST['boardId'], "");
@@ -37,6 +37,8 @@ class APP__UsrArticleController {
     if ( !$boardId ) {
       jsHistoryBackExit("내용을 입력해주세요.");
     }
+    
+    
 
     
     
@@ -83,7 +85,7 @@ class APP__UsrArticleController {
   // 페이지 번호 받아오기 (끝)
 
     // 아래 두 변수는 boardId값이 입력됐을 경우, 값이 바뀜.
-    $loginPage = true;
+    
     $pageTitle = "모든 게시물 리스트";
 
     // 사용자가 게시물 리스트 조회 시, 선택할 수 있는 게시판 리스트 호출

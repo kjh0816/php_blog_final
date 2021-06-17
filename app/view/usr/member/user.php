@@ -35,11 +35,11 @@
 
 
 <?php 
-$loginPage = true;
+$pageTitleIcon = '<i class="fas fa-address-card"></i>';
 $pageTitle = "내 정보";
 ?>
 <?php require_once __DIR__ . '/../head.php'?>
-<nav class="user-info">
+<nav class="user-info mt-10">
 <div>
 이름 : <?=$member['name']?><br><br>
 별명 : <?=$member['nickname']?><br><br>

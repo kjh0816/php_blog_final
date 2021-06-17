@@ -1,14 +1,17 @@
 <?php 
-$loginPage = true;
+$pageTitleIcon = '<i class="fas fa-newspaper"></i>';
 $pageTitle = "${id}번 게시물 상세페이지";
+
+
+$body = str_replace('<script', '<t-script>', $article['body']);
+$body = str_replace('</script>', '</t-script>', $article['body']);
 ?>
-
-<?php require_once __DIR__ . "/../head.php";   
-?>
-
+<?php require_once __DIR__ . "/../head.php"; ?>
+<?php require_once __DIR__ . "/../../part/toastUiSetup.php"; ?>
 
 
-<div class="article-detail-section">
+
+<div class="article-detail-section mt-10">
     번호 : <?=$articleDetail['id']?><br><br>
     게시판 : <?=$articleDetail['name']?><br><br>
     제목 : <?=$articleDetail['title']?><br><br>
@@ -16,7 +19,8 @@ $pageTitle = "${id}번 게시물 상세페이지";
     작성자 : <?=$articleDetail['nickname']?><br><br>
     작성날짜 : <?=$articleDetail['regDate']?><br><br>
     수정날짜 : <?=$articleDetail['updateDate']?><br><br>
-    내용 : <?=$articleDetail['body']?><br><br>
+    내용 : <script type="text/x-template"><?=$body?></script>
+      <div class="toast-ui-viewer"></div>
     
 
 <?php if($heart == 1){ ?>

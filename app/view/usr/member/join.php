@@ -1,5 +1,5 @@
 <?php 
-$loginPage = true;
+$pageTitleIcon = "false";
 $pageTitle = "회원가입";
 ?>
 
