@@ -18,18 +18,18 @@ if(isset($_GET["page"])){
   <div class="mb-2">
 <span>
 검색어: 
-<input placeholder="검색 내용을 적어주세요." type="search" name="searchKeyword" class="text-center underline hover:no-underline">
+<input placeholder="검색 내용을 적어주세요." type="search" name="searchKeyword" class="text-center badge badge-outline">
 </span>
 </div>
 <div class="">
 <span class="mr-4">게시판: </span>
-<select class="article-list-choose-board text-pink-400" name="boardId">
+<select class="article-list-choose-board btn-outline btn-primary" name="boardId">
 <option value="0" class="text-pink-500">게시판 선택</option>
 <?php foreach($boards as $board){?>
     <option value="<?=$board['id']?>"><?=$board['name']?></option>
 <?php }?>
 </select>
-<input type="submit" value="검색" class="ml-4  cursor-pointer modify-delete-border">
+<input type="submit" value="검색" class="ml-4 btn btn-outline btn-primary">
 </div>
 </form>
   </div>
