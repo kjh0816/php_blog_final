@@ -1,5 +1,5 @@
 <?php
-$loginPage = true;
+$pageTitleIcon = '<i class="fas fa-edit"></i>';
 $pageTitle = "게시물 수정, ${id}번 게시물";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>

@@ -15,7 +15,7 @@ if(isset($_GET["page"])){
 <section class="section-article-menu mt-5 ml-10">
   <div class="container mx-auto">
   <form action="list">
-  <div class="mb-2">
+  <div>
 <span>
 검색어: 
 <input placeholder="검색 내용을 적어주세요." type="search" name="searchKeyword" class="text-center badge badge-outline">
