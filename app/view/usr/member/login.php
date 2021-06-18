@@ -20,8 +20,8 @@ $pageTitle = "로그인";
       <label>Password</label>
     </div>
     <div class="login-page-buttons">
-    <input class="login-button" type="submit" value="Login">
-    <a href="join" class="signup-button">Sign up</a>
+    <input class="btn btn-primary mr-20" type="submit" value="Login">
+    <a href="join" class="btn btn-secondary ml-10">Sign up</a>
     </div>
   </form>
 </div>
