@@ -29,17 +29,19 @@ $loginedMember = $_REQUEST['App__loginedMember'];
 
   <link rel="stylesheet" href="/common.css">
 
+<!-- 로컬 개발에서는 통계 측정이 안 되고, 실제 서버에 접속했을 때만 통계가 집계되도록. -->
   <?php if ( $envCode == 'prod' ) { ?>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-94LNZ8CK0K"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K8L4GC6D0J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    gtag('config', 'G-94LNZ8CK0K');
-  </script>
+  gtag('config', 'G-K8L4GC6D0J');
+</script>
   <?php } ?>
+  
 
   <?php require_once "meta.php"; ?>
 
