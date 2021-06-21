@@ -9,7 +9,7 @@ class App__Application {
   }
 
   public function getProdSiteDomain() {
-    return "jh.oa.gg";
+    return "b.jihoo.kr";
   }
 
   public function getDbConnectionByEnv(): mysqli {
