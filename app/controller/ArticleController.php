@@ -287,16 +287,27 @@ class APP__UsrArticleController {
 
         // digitalCode가 1인 경우, 회색 하트 상태에서 좋아요를 누른 경우이므로, article 테이블의 좋아요(liked)를 1 올려준다.
         $this->articleService->addArticleLiked($articleId);
-
-        //jsLocationReplaceExit("detail?id=${articleId}", "좋아요를 눌렀습니다.");
+        ?>
+        <button id="articleLiked"><i style="color:red;" class="fas fa-heart"></i></button>
+        <?php
+        // $heart = 1;
+        // jsLocationReplaceExit("detail?id=${articleId}", "좋아요를 눌렀습니다.");
+        
+        jsAlert("좋아요를 눌렀습니다.");
+        
 
      }else { 
 
         
         // digitalCode가 1이 아닌 경우(=0), 빨간 하트 상태에서 좋아요를 누른 경우이므로, article 테이블의 좋아요(liked)를 1 빼준다.
         $this->articleService->removeArticleLiked($articleId);
-
-        //jsLocationReplaceExit("detail?id=${articleId}", "좋아요를 취소했습니다.");
+        ?>
+        
+        <button id="articleNotLiked"><i class="far fa-heart"></i></button>
+        <?php
+        // $heart = 100;
+        // jsLocationReplaceExit("detail?id=${articleId}", "좋아요를 취소했습니다.");
+        jsAlert("좋아요를 취소했습니다.");
             
     }
     

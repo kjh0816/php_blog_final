@@ -102,9 +102,7 @@ class APP__ArticleRepository {
     $sql->add("WHERE memberId = ?", $memberId);
     $sql->add("AND articleId = ?", $articleId);
     DB__update($sql);
-    echo $digitalCode;
-    echo $memberId;
-    echo $articleId;
+
   }
 
   public function addArticleLiked(int $articleId){

@@ -23,21 +23,38 @@ $body = str_replace('</script>', '</t-script>', $article['body']);
     내용 : <script type="text/x-template"><?=$body?></script>
       <div class="toast-ui-viewer"></div>
     
+<!-- 
+>> 기존 HTML을 AJAX가 불러와도 기존 데이터가 남아있어서 클릭 이벤트가 동일한 문제.
+방법 1)
 
-<?php if($heart == 1){ ?>
+- $heart의 값을 if문이 실행될 때 변경해준다.
+
+ -->
+<?php if($heart == 1){ 
+    
+    echo "heart = 1,";
+    print_r($heart);
+    
+    $heart = 100;
+    
+    echo "heart = 100,";
+    print_r($heart);
+
+    ?>
     
     <!-- 값이 1인 경우, 붉은 하트를 보여줄 것 / 클릭 시 0(좋아요 해제)으로 바뀐다. -->
-    <a href="articleLiked"><i style="color:red;" class="fas fa-heart"></i></a>
+    
     <button id="articleLiked"><i style="color:red;" class="fas fa-heart"></i></button>
-<?php }else{ ?>  
+<?php }else{ 
+    
+    $heart = 1;
+    ?>  
     <!-- 값이 없거나 0인 경우, 회색 하트를 보여줄 것 / 클릭 시 1(좋아요)으로 바뀐다. -->
-    <a href="doLiked?memberId=<?=$loginedMemberId?>&articleId=<?=$id?>&digitalCode=1"><i class="far fa-heart"></i></a>
-
+    
+    <button id="articleNotLiked"><i class="far fa-heart"></i></button>
 
 <?php        } ?>
-<!-- 
-    현재 문제 : digitalCode(100), articleId, memberId의 값이 ajax가 실행됐을 때 잠깐 보인다.
- -->
+
 <script>
 $(document).ready(function(){
     $("#articleLiked").click(()=>{
@@ -45,9 +62,10 @@ $(document).ready(function(){
         $.ajax(
             {
                 type:"POST",
+                dataType: 'html',
                 url:"doLiked?memberId=<?=$loginedMemberId?>&articleId=<?=$id?>&digitalCode=100",
                 success: function(data){
-                    // console.log(data);
+                    // alert('좋아요를 취소했습니다.');
                     $("#articleLiked").html(data);
                     
                 }
@@ -57,6 +75,28 @@ $(document).ready(function(){
     });
 });
 </script>
+
+<script>
+$(document).ready(function(){
+    $("#articleNotLiked").click(()=>{
+        
+        $.ajax(
+            {
+                type:"POST",
+                dataType: 'html',
+                url:"doLiked?memberId=<?=$loginedMemberId?>&articleId=<?=$id?>&digitalCode=1",
+                success: function(data){
+                    // alert('좋아요를 눌렀습니다.');
+                    $("#articleNotLiked").html(data);
+                    
+                }
+        }
+        );
+        
+    });
+});
+</script>
+
 
 <?= 
 // 좋아요 수
