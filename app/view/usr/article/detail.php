@@ -27,7 +27,7 @@ $body = str_replace('</script>', '</t-script>', $article['body']);
 <?php if($heart == 1){ ?>
     
     <!-- 값이 1인 경우, 붉은 하트를 보여줄 것 / 클릭 시 0(좋아요 해제)으로 바뀐다. -->
-    <a href="doLiked?memberId=<?=$loginedMemberId?>&articleId=<?=$id?>&digitalCode=100"><i style="color:red;" class="fas fa-heart"></i></a>
+    <a href="articleLiked"><i style="color:red;" class="fas fa-heart"></i></a>
     <button id="articleLiked"><i style="color:red;" class="fas fa-heart"></i></button>
 <?php }else{ ?>  
     <!-- 값이 없거나 0인 경우, 회색 하트를 보여줄 것 / 클릭 시 1(좋아요)으로 바뀐다. -->
@@ -37,7 +37,6 @@ $body = str_replace('</script>', '</t-script>', $article['body']);
 <?php        } ?>
 <!-- 
     현재 문제 : digitalCode(100), articleId, memberId의 값이 ajax가 실행됐을 때 잠깐 보인다.
-
  -->
 <script>
 $(document).ready(function(){
@@ -48,7 +47,9 @@ $(document).ready(function(){
                 type:"POST",
                 url:"doLiked?memberId=<?=$loginedMemberId?>&articleId=<?=$id?>&digitalCode=100",
                 success: function(data){
+                    // console.log(data);
                     $("#articleLiked").html(data);
+                    
                 }
         }
         );

@@ -96,15 +96,15 @@ class APP__ArticleRepository {
   }
 
   public function changeHeart(int $digitalCode, int $memberId, int $articleId){
-    echo $digitalCode;
-    echo $memberId;
-    echo $articleId;
     $sql = DB__secSql();
     $sql->add("UPDATE articleLiked");
     $sql->add("SET digitalCode = ?", $digitalCode);
     $sql->add("WHERE memberId = ?", $memberId);
     $sql->add("AND articleId = ?", $articleId);
     DB__update($sql);
+    echo $digitalCode;
+    echo $memberId;
+    echo $articleId;
   }
 
   public function addArticleLiked(int $articleId){

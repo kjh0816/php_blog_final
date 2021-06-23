@@ -149,7 +149,7 @@ class APP__UsrArticleController {
               $totalRecord = $arrayCount['articleCount'];
               
               
-              $itemCountInAPage = 5; // 한 페이지에 보여줄 게시물 개수  >> itemCountInAPage
+              $itemCountInAPage = 2; // 한 페이지에 보여줄 게시물 개수  >> itemCountInAPage
               $blockCount = 5; // 한 블록에 표시할 페이지 번호 갯수
               $blockNum = ceil($page / $blockCount); // 현재 페이지가 해당하는 블록 
               // 현재 페이지가 5씩 넘어갈 때마다 한 블록씩 넘어간다.
@@ -266,8 +266,6 @@ class APP__UsrArticleController {
 
   public function actionDoLiked() {
 
-    
-
     $articleId = getIntValueOr($_REQUEST['articleId'], 0);
     if($articleId == 0){
         jsHistoryBackExit("게시물 번호(id)가 존재하지 않습니다.");
@@ -283,17 +281,14 @@ class APP__UsrArticleController {
         jsHistoryBackExit("좋아요가 입력되지 않았습니다.");
     }
     
-    
     $this->articleService->changeHeart($digitalCode, $memberId, $articleId);
     
-    
-
     if($digitalCode == 1){
 
         // digitalCode가 1인 경우, 회색 하트 상태에서 좋아요를 누른 경우이므로, article 테이블의 좋아요(liked)를 1 올려준다.
         $this->articleService->addArticleLiked($articleId);
 
-        jsLocationReplaceExit("detail?id=${articleId}", "좋아요를 눌렀습니다.");
+        //jsLocationReplaceExit("detail?id=${articleId}", "좋아요를 눌렀습니다.");
 
      }else { 
 
@@ -301,7 +296,7 @@ class APP__UsrArticleController {
         // digitalCode가 1이 아닌 경우(=0), 빨간 하트 상태에서 좋아요를 누른 경우이므로, article 테이블의 좋아요(liked)를 1 빼준다.
         $this->articleService->removeArticleLiked($articleId);
 
-        jsLocationReplaceExit("detail?id=${articleId}", "좋아요를 취소했습니다.");
+        //jsLocationReplaceExit("detail?id=${articleId}", "좋아요를 취소했습니다.");
             
     }
     
