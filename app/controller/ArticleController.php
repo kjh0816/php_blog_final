@@ -233,8 +233,13 @@ class APP__UsrArticleController {
         // 현재 로그인된 유저가 좋아요를 이미 눌렀는지 확인하기 위해 테이블 조회
         $arrayForm = $this->articleService->getArticleHeart($loginedMemberId, $id);
         
-        $array = intval($arrayForm['digitalCode']);
- 
+        if(isset($arrayForm)){
+          $array = intval($arrayForm['digitalCode']);
+        }else{
+          $array = 100;
+        }
+        
+        
        
         
         if($array != null)  {

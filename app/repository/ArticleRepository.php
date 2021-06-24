@@ -79,7 +79,7 @@ class APP__ArticleRepository {
 
   public function getArticleHeart(int $loginedMemberId, int $id): array | null{
     $sql = DB__secSql();
-    $sql->add("SELECT digitalCode");
+    $sql->add("SELECT IFNULL(digitalCode, 100) `digitalCode`");
     $sql->add("FROM articleLiked");
     $sql->add("WHERE memberId = ?", $loginedMemberId);
     $sql->add("AND articleId = ?", $id);
