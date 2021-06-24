@@ -296,8 +296,13 @@ class APP__UsrArticleController {
         $digitalCode = 100;
         $this->articleService->removeArticleLiked($articleId); // 좋아요 카운트 증가
         $this->articleService->changeHeart($digitalCode, $memberId, $articleId);
+        $getArticleLikedCount = $this->articleService->getArticleLikedCount($articleId);
+        $articleLikedCount = intval($getArticleLikedCount['liked']);
         ?>
-        <button id="articleNotLiked"><i class="far fa-heart"></i></button>
+        <div id="articleLiked" class="flex">
+        <button><i class="far fa-heart"></i></button>
+        <div class="ml-1"><?=$articleLikedCount;?></div>
+        </div>
         <?php
         
         // jsLocationReplaceExit("detail?id=${articleId}", "좋아요를 눌렀습니다.");
@@ -313,8 +318,13 @@ class APP__UsrArticleController {
         $digitalCode = 1;
         $this->articleService->addArticleLiked($articleId); // 좋아요 카운트 감소
         $this->articleService->changeHeart($digitalCode, $memberId, $articleId);
+        $getArticleLikedCount = $this->articleService->getArticleLikedCount($articleId);
+        $articleLikedCount = intval($getArticleLikedCount['liked']);
         ?>
-        <button id="articleLiked"><i style="color:red;" class="fas fa-heart"></i></button>
+        <div id="articleLiked" class="flex">
+        <button><i style="color:red;" class="fas fa-heart"></i></button>
+        <div class="ml-1"><?=$articleLikedCount;?></div>
+        </div>
         
         <?php
         

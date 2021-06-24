@@ -41,16 +41,19 @@ $body = str_replace('</script>', '</t-script>', $article['body']);
     ?>
     
     <!-- 값이 1인 경우, 붉은 하트를 보여줄 것 / 클릭 시 0(좋아요 해제)으로 바뀐다. -->
-    
-    <button id="articleLiked"><i style="color:red;" class="fas fa-heart"></i></button>
+    <div id="articleLiked" class="flex">
+    <button><i style="color:red;" class="fas fa-heart"></i></button>
+    <div class="ml-1"><?=$articleDetail['liked'];?></div>
+    </div>
 <?php }else{ 
     
     
     ?>  
     <!-- 값이 없거나 0인 경우, 회색 하트를 보여줄 것 / 클릭 시 1(좋아요)으로 바뀐다. -->
-    
-    <button id="articleLiked"><i class="far fa-heart"></i></button>
-
+    <div id="articleLiked" class="flex">
+    <button><i class="far fa-heart"></i></button>
+    <div class="ml-1"><?=$articleDetail['liked'];?></div>
+    </div>
 <?php        } ?>
 <!-- 
     구현 예정
@@ -72,7 +75,6 @@ $(document).ready(function(){
 
                 url:"doLiked?memberId=<?=$loginedMemberId?>&articleId=<?=$id?>",
                 success: function(data){
-                    // alert('좋아요를 취소했습니다.');
                     $("#articleLiked").html(data);
                     
                 }
@@ -85,10 +87,7 @@ $(document).ready(function(){
 
 
 
-<?= 
-// 좋아요 수
-$articleDetail['liked'];
-?>
+
 </div>
 <br>
 <hr>

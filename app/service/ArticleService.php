@@ -67,6 +67,10 @@ class APP__ArticleService {
     return $this->articleRepository->checkLiked($memberId, $articleId);
   }
 
+  public function getArticleLikedCount(int $articleId): array {
+    return $this->articleRepository->getArticleLikedCount($articleId);
+  }
+
   
   
 }

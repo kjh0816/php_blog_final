@@ -188,6 +188,14 @@ class APP__ArticleRepository {
     return DB__getRow($sql);
   }
 
+  public function getArticleLikedCount(int $articleId): array {
+    $sql = DB__secSql();
+    $sql->add("SELECT liked");
+    $sql->add("FROM article");
+    $sql->add("WHERE id = ?", $articleId);
+    return DB__getRow($sql);
+  }
+
     
 
 
