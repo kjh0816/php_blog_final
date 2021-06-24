@@ -32,13 +32,11 @@ $body = str_replace('</script>', '</t-script>', $article['body']);
  -->
 <?php if($heart == 1){ 
     
-    echo "heart = 1,";
-    print_r($heart);
+    
     
     $heart = 100;
     
-    echo "heart = 100,";
-    print_r($heart);
+    
 
     ?>
     
@@ -51,9 +49,16 @@ $body = str_replace('</script>', '</t-script>', $article['body']);
     ?>  
     <!-- 값이 없거나 0인 경우, 회색 하트를 보여줄 것 / 클릭 시 1(좋아요)으로 바뀐다. -->
     
-    <button id="articleNotLiked"><i class="far fa-heart"></i></button>
+    <button id="articleLiked"><i class="far fa-heart"></i></button>
 
 <?php        } ?>
+<!-- 
+    구현 예정
+    Controller에서 heart(digitalCode) 값을 먼저 조회한 후 값에 따라서 분기한 후 변경해주고, 다른 HTML 데이터를 뿌려준다.
+    좋아요가 눌리면 조회수도 올라가고 내려가야한다.
+
+
+ -->
 
 <script>
 $(document).ready(function(){
@@ -63,7 +68,9 @@ $(document).ready(function(){
             {
                 type:"POST",
                 dataType: 'html',
-                url:"doLiked?memberId=<?=$loginedMemberId?>&articleId=<?=$id?>&digitalCode=100",
+                data: { $heart : "<?php echo $heart;?>" },
+
+                url:"doLiked?memberId=<?=$loginedMemberId?>&articleId=<?=$id?>&digitalCode=<?=$heart?>",
                 success: function(data){
                     // alert('좋아요를 취소했습니다.');
                     $("#articleLiked").html(data);
@@ -76,26 +83,6 @@ $(document).ready(function(){
 });
 </script>
 
-<script>
-$(document).ready(function(){
-    $("#articleNotLiked").click(()=>{
-        
-        $.ajax(
-            {
-                type:"POST",
-                dataType: 'html',
-                url:"doLiked?memberId=<?=$loginedMemberId?>&articleId=<?=$id?>&digitalCode=1",
-                success: function(data){
-                    // alert('좋아요를 눌렀습니다.');
-                    $("#articleNotLiked").html(data);
-                    
-                }
-        }
-        );
-        
-    });
-});
-</script>
 
 
 <?= 

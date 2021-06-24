@@ -280,7 +280,16 @@ class APP__UsrArticleController {
     if($digitalCode == 0){
         jsHistoryBackExit("좋아요가 입력되지 않았습니다.");
     }
-    
+    // 좋아요 테이블을 조회해보고 동적으로 데이터를 뿌려줘야한다.
+
+    $isLiked = $this->articleService->checkLiked($memberId, $articleId);
+
+    if($isLiked == 1){
+
+    }else{
+
+    }
+
     $this->articleService->changeHeart($digitalCode, $memberId, $articleId);
     
     if($digitalCode == 1){
@@ -290,7 +299,7 @@ class APP__UsrArticleController {
         ?>
         <button id="articleLiked"><i style="color:red;" class="fas fa-heart"></i></button>
         <?php
-        // $heart = 1;
+        $heart = 1;
         // jsLocationReplaceExit("detail?id=${articleId}", "좋아요를 눌렀습니다.");
         
         jsAlert("좋아요를 눌렀습니다.");
@@ -305,7 +314,7 @@ class APP__UsrArticleController {
         
         <button id="articleNotLiked"><i class="far fa-heart"></i></button>
         <?php
-        // $heart = 100;
+        $heart = 100;
         // jsLocationReplaceExit("detail?id=${articleId}", "좋아요를 취소했습니다.");
         jsAlert("좋아요를 취소했습니다.");
             

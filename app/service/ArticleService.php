@@ -63,6 +63,10 @@ class APP__ArticleService {
     return $this->articleRepository->getArticleCount($searchKeyword, $boardId);
   }
 
+  public function checkLiked(int $memberId, int $articleId): int | null {
+    return $this->articleRepository->checkLiked($memberId, $articleId);
+  }
+
   
   
 }
