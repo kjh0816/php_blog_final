@@ -77,7 +77,7 @@ class APP__ArticleRepository {
     DB__update($sql);
   }
 
-  public function getArticleHeart(int $loginedMemberId, int $id): int | null{
+  public function getArticleHeart(int $loginedMemberId, int $id): array | null{
     $sql = DB__secSql();
     $sql->add("SELECT digitalCode");
     $sql->add("FROM articleLiked");
@@ -95,7 +95,7 @@ class APP__ArticleRepository {
     DB__insert($sql);
   }
 
-  public function checkLiked(int $memberId, int $articleId){
+  public function checkLiked(int $memberId, int $articleId): array|null{
     $sql = DB__secSql();
     $sql->add("SELECT digitalCode");
     $sql->add("FROM articleLiked");

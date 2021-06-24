@@ -231,15 +231,17 @@ class APP__UsrArticleController {
         
         
         // 현재 로그인된 유저가 좋아요를 이미 눌렀는지 확인하기 위해 테이블 조회
-        $array = $this->articleService->getArticleHeart($loginedMemberId, $id);
+        $arrayForm = $this->articleService->getArticleHeart($loginedMemberId, $id);
         
-
+        $array = intval($arrayForm['digitalCode']);
+ 
+       
         
+        if($array != null)  {
         
-        if(!empty($array))  {
+        // array가 빈 경우가 아니면, 좋아요를 눌렀거나, 눌렀다가 취소한적이 있는 경우로, 100 또는 1의 값을 heart로 한다.  
+        $heart = $array;
         
-        // array가 빈 경우가 아니면, 좋아요를 눌렀거나, 눌렀다가 취소한적이 있는 경우로, 10W0 또는 1의 값을 heart로 한다.  
-        $heart = $array['digitalCode'];
         
 
         }else{
@@ -247,6 +249,7 @@ class APP__UsrArticleController {
           // 로그인을 했지만, 좋아요를 누른 적이 없는 경우, 해당 유저 id 및 articleId에 해당하는 row에 100을 넣어주고, heart에 100을 준다.
           $this->articleService->insertZeroInArticleHeart($loginedMemberId, $id);
           $heart = 100;
+          
         }
         
     }else{
@@ -276,47 +279,47 @@ class APP__UsrArticleController {
         jsHistoryBackExit("회원이 존재하지 않습니다.");
     }
 
-    $digitalCode = getIntValueOr($_REQUEST['digitalCode'], 0);
-    if($digitalCode == 0){
-        jsHistoryBackExit("좋아요가 입력되지 않았습니다.");
-    }
-    // 좋아요 테이블을 조회해보고 동적으로 데이터를 뿌려줘야한다.
 
-    $isLiked = $this->articleService->checkLiked($memberId, $articleId);
+    $arrayDigitalCode = $this->articleService->checkLiked($memberId, $articleId);
+    $digitalCode = intval($arrayDigitalCode['digitalCode']);
+    
 
-    if($isLiked == 1){
+    
 
-    }else{
-
-    }
-
-    $this->articleService->changeHeart($digitalCode, $memberId, $articleId);
+    
+    
     
     if($digitalCode == 1){
 
-        // digitalCode가 1인 경우, 회색 하트 상태에서 좋아요를 누른 경우이므로, article 테이블의 좋아요(liked)를 1 올려준다.
-        $this->articleService->addArticleLiked($articleId);
+        // digitalCode가 1인 경우, 좋아요를 눌렀던 상태이므로 좋아요를 해제한 것이다.
+        
+        $digitalCode = 100;
+        $this->articleService->removeArticleLiked($articleId); // 좋아요 카운트 증가
+        $this->articleService->changeHeart($digitalCode, $memberId, $articleId);
         ?>
-        <button id="articleLiked"><i style="color:red;" class="fas fa-heart"></i></button>
+        <button id="articleNotLiked"><i class="far fa-heart"></i></button>
         <?php
-        $heart = 1;
+        
         // jsLocationReplaceExit("detail?id=${articleId}", "좋아요를 눌렀습니다.");
         
-        jsAlert("좋아요를 눌렀습니다.");
+        
+        jsAlert("좋아요를 취소했습니다.");
         
 
      }else { 
 
         
-        // digitalCode가 1이 아닌 경우(=0), 빨간 하트 상태에서 좋아요를 누른 경우이므로, article 테이블의 좋아요(liked)를 1 빼준다.
-        $this->articleService->removeArticleLiked($articleId);
+        // digitalCode가 1이 아닌 경우(=0), 좋아요를 안 눌렀던 상태이므로 좋아요를 누른 것이다.
+        $digitalCode = 1;
+        $this->articleService->addArticleLiked($articleId); // 좋아요 카운트 감소
+        $this->articleService->changeHeart($digitalCode, $memberId, $articleId);
         ?>
+        <button id="articleLiked"><i style="color:red;" class="fas fa-heart"></i></button>
         
-        <button id="articleNotLiked"><i class="far fa-heart"></i></button>
         <?php
-        $heart = 100;
+        
         // jsLocationReplaceExit("detail?id=${articleId}", "좋아요를 취소했습니다.");
-        jsAlert("좋아요를 취소했습니다.");
+        jsAlert("좋아요를 눌렀습니다.");
             
     }
     

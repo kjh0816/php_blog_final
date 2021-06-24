@@ -34,7 +34,7 @@ $body = str_replace('</script>', '</t-script>', $article['body']);
     
     
     
-    $heart = 100;
+    
     
     
 
@@ -45,7 +45,7 @@ $body = str_replace('</script>', '</t-script>', $article['body']);
     <button id="articleLiked"><i style="color:red;" class="fas fa-heart"></i></button>
 <?php }else{ 
     
-    $heart = 1;
+    
     ?>  
     <!-- 값이 없거나 0인 경우, 회색 하트를 보여줄 것 / 클릭 시 1(좋아요)으로 바뀐다. -->
     
@@ -70,7 +70,7 @@ $(document).ready(function(){
                 dataType: 'html',
                 data: { $heart : "<?php echo $heart;?>" },
 
-                url:"doLiked?memberId=<?=$loginedMemberId?>&articleId=<?=$id?>&digitalCode=<?=$heart?>",
+                url:"doLiked?memberId=<?=$loginedMemberId?>&articleId=<?=$id?>",
                 success: function(data){
                     // alert('좋아요를 취소했습니다.');
                     $("#articleLiked").html(data);
